@@ -10,6 +10,7 @@ import PageSelector from '../components/PageSelector';
 import Induce from '../components/Induce';
 
 import Spinner from '../components/Spinner';
+import MobileProductCategory from '../components/ProductPage/MobileProductCategory';
 
 const ProductPage = () => {
 	const location = useLocation();
@@ -68,7 +69,15 @@ const ProductPage = () => {
 		<Spinner />
 	) : (
 		<div id="container">
+			<MobileProductCategory
+				part={part}
+				subPart={subPart}
+				setPart={setPart}
+				setSubPart={setSubPart}
+				subPartArr={subPartArr}
+			/>
 			<ProductBanner part={part} subPartArr={subPartArr} />
+
 			<ProductCategory
 				part={part}
 				subPart={subPart}
@@ -76,6 +85,7 @@ const ProductPage = () => {
 				setSubPart={setSubPart}
 				subPartArr={subPartArr}
 			/>
+
 			{list && (
 				<ProductList
 					part={part}
