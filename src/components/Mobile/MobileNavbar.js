@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import logo from '../../images/red-logo.svg';
@@ -9,6 +9,7 @@ import MobileMenu from './MobileMenu';
 import Alert from '../Modal/Alert';
 
 const MobileNavbar = () => {
+	const location = useLocation();
 	const history = useHistory();
 	const user = useSelector((state) => state.user);
 	const [menuState, setMenuState] = useState(false);
@@ -30,7 +31,7 @@ const MobileNavbar = () => {
 
 	return (
 		<Container menuState={menuState}>
-			<NavbarWarp>
+			<NavbarWarp path={location.pathname === '/product'}>
 				{menuState && (
 					<NavbarInfoBox>
 						{user.login ? (
@@ -101,6 +102,7 @@ const NavbarWarp = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	box-shadow: 0px 3px 10px #0000000f;
+	${(props) => props.path && `box-shadow: none;`}
 `;
 const NavbarInfoBox = styled.div`
 	display: flex;
