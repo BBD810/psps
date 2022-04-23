@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IMG_ADDRESS } from '../../config';
 import * as _product from '../../controller/product';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import logo from '../../images/red-logo.svg';
 
 const RecommendList = () => {
 	const history = useHistory();
-	const theme = useTheme();
 	const [list, setList] = useState([]);
 	const [hover, setHover] = useState('');
 
@@ -32,7 +31,7 @@ const RecommendList = () => {
 			<Logo alt="logo" src={logo} />
 			<Title>{`품생품사 추천 상품`}</Title>
 			<Desc>{`품생품사에서 선별한\n특별한 상품들을 지금 바로 만나보세요!`}</Desc>
-			<ListWrap theme={theme}>
+			<ListWrap>
 				{list &&
 					list.map((el, idx) => (
 						<List
@@ -47,7 +46,7 @@ const RecommendList = () => {
 								setHover('');
 							}}
 						>
-							<ListImgBox theme={theme}>
+							<ListImgBox>
 								<ListImg
 									alt="product img"
 									src={`${IMG_ADDRESS}/${el.image}`}

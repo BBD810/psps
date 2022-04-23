@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import logo from '../../images/red-logo.svg';
 import cartIco from '../../images/ico-mobileCart.svg';
 import toggleIco from '../../images/ico-toggle-white.svg';
@@ -11,7 +11,6 @@ import Alert from '../Modal/Alert';
 const MobileNavbar = () => {
 	const history = useHistory();
 	const user = useSelector((state) => state.user);
-	const theme = useTheme();
 	const [menuState, setMenuState] = useState(false);
 	const [alertState, setAlertState] = useState(false);
 	const [alertMsg, setAlertMsg] = useState('');
@@ -30,7 +29,7 @@ const MobileNavbar = () => {
 	};
 
 	return (
-		<Container theme={theme} menuState={menuState}>
+		<Container menuState={menuState}>
 			<NavbarWarp>
 				{menuState && (
 					<NavbarInfoBox>
@@ -66,7 +65,6 @@ const MobileNavbar = () => {
 					</ShoppingAndCart>
 				)}
 			</NavbarWarp>
-
 			{menuState && (
 				<MobileMenu
 					setMenuState={setMenuState}
@@ -123,7 +121,6 @@ const LoginOrRegInfoBox = styled(NavbarInfoBox)`
 const LoginOrRegInfo = styled.p`
 	font-family: 'kr-r';
 `;
-
 const ToggleImg = styled.img`
 	width: 24px;
 	height: 24px;
@@ -164,7 +161,6 @@ const MenuBox = styled.ul`
 		}
 	}`}
 `;
-
 const LogoImgBox = styled.div`
 	width: 36px;
 	height: 36px;
