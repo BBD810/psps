@@ -66,6 +66,15 @@ const ProductCategoryWrap = styled.div`
 	align-items: center;
 	transform: translateY(-30%);
 	z-index: 3;
+	@media ${(props) => props.theme.device.mobile} {
+		transform: translateY(0);
+		width: 100vw;
+		align-items: flex-start;
+		overflow-x: auto;
+		::-webkit-scrollbar {
+			display: none;
+		}
+	}
 `;
 const PartWrap = styled.ul`
 	width: 100%;
@@ -76,6 +85,9 @@ const PartWrap = styled.ul`
 	box-shadow: 0px 3px 18px #00000029;
 	border-radius: 14px;
 	cursor: pointer;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const PartList = styled.li`
 	width: 12rem;
@@ -96,6 +108,14 @@ const SubPartWrap = styled.ul`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media ${(props) => props.theme.device.mobile} {
+		background-color: #fff;
+		width: 100%;
+		min-width: 443px;
+		box-shadow: 0px 3px 10px #0000000f;
+		height: fit-content;
+		margin: 0;
+	}
 `;
 const SubPartListBox = styled.li`
 	display: flex;
@@ -108,19 +128,24 @@ const SubPartList = styled.p`
 	font-size: 1.8rem;
 	font-family: 'kr-r';
 	color: #000000;
-	/* padding: 0 0.3rem; */
-	/* border-right: 1px solid #000; */
 	cursor: pointer;
 	&:nth-last-child(1) {
 		border: none;
 	}
 	${(props) =>
-		props.active && `font-family:'kr-b' ; border-bottom:2px solid #E50011`}
+		props.active && `font-family:'kr-b' ; border-bottom:2px solid #E50011;`}
+	@media ${(props) => props.theme.device.mobile} {
+		padding: 10px 8px;
+		${(props) => props.active && ` padding-bottom:8px;`}
+	}
 `;
 const SubPartListLine = styled.div`
 	width: 0.1rem;
 	height: 1.3rem;
 	background-color: #8e8e8e;
 	margin: 0 1rem;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 	${(props) => props.last && `display:none`}
 `;

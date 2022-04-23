@@ -20,6 +20,9 @@ const ProductBannerWrap = styled.div`
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	@media ${(props) => props.theme.device.mobile} {
+		margin-top: 48px;
+	}
 `;
 const ProductBannerImg = styled.img`
 	width: 100%;
@@ -37,4 +40,7 @@ const ProductBannerTitle = styled.h1`
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 20px;
+	}
 `;
