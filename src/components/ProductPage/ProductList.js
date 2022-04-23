@@ -76,15 +76,21 @@ const ProductContainer = styled.div`
 `;
 const ProductWrap = styled.ul`
 	margin-bottom: 0;
-	width: 120rem;
+	width: 100%;
+	width: fit-content;
+	max-width: 120rem;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-column-gap: 3rem;
+	gap: 4rem 3rem;
+	margin-bottom: 5.9rem;
+	@media ${(props) => props.theme.device.mobile} {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 28px 16px;
+	}
 `;
 const Product = styled.li`
-	width: 38rem;
-	height: 40rem;
-	margin-bottom: 5.9rem;
+	max-width: 38rem;
+	max-height: 40rem;
 `;
 const ProductImgBox = styled.div`
 	width: 38rem;
@@ -92,6 +98,10 @@ const ProductImgBox = styled.div`
 	cursor: pointer;
 	border-radius: 24px;
 	overflow: hidden;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 156px;
+		height: 144px;
+	}
 `;
 const ProductImg = styled.img`
 	width: 100%;
@@ -116,6 +126,9 @@ const GrayBackground = styled.div`
 	position: absolute;
 	bottom: -9.5rem;
 	z-index: -10;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const ProductDesc = styled.span`
 	font-size: 1.4rem;
