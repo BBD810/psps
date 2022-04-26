@@ -5,7 +5,7 @@ import * as info from '../../config';
 const ProductInfoTable = (props) => {
 	const refundInfoArr = [
 		'- 식품의 경우 단순 소비자 단순 변심으로 인한 개인적인 사유로는 교환 및 환불이 불가합니다.',
-		`- 상품의 변질, 이물질 발견, 아이스박스 및 아이스팩이 파손되어 배송될 경우 마이페이지 결제내역을 통해 교환/환불 요청을 보낼 수 있으며,\n  고객센터(${info.COMPANY_CONTACT})로 전화주시면 바로 교환/환불 해드리겠습니다.`,
+		`- 상품의 변질, 이물질 발견, 아이스박스 및 아이스팩이 파손되어 배송될 경우 마이페이지 결제내역을 통해 교환/환불 요청을 보낼 수 있으며, 고객센터(${info.COMPANY_CONTACT})로 전화주시면 바로 교환/환불 해드리겠습니다.`,
 		'- 고객센터 운영시간은 평일 오전 9시부터 오후 6시까지 입니다. (점심시간 : 오전 12시부터 오후 1시)',
 	];
 
@@ -126,13 +126,19 @@ const ProductInfoTable = (props) => {
 export default ProductInfoTable;
 
 const InfoTableWrap = styled.div`
-	width: 192rem;
+	width: 100%;
+	max-width: 192rem;
 	margin-bottom: 7.75rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media ${(props) => props.theme.device.tablet} {
+		width: 90vw;
+	}
 `;
-const Item = styled.div``;
+const Item = styled.div`
+	max-width: 90vw;
+`;
 const Title = styled.p`
 	height: 4rem;
 	line-height: 4rem;
@@ -143,13 +149,18 @@ const Title = styled.p`
 `;
 const InfoTable = styled.div`
 	margin-bottom: 4.6rem;
-	width: 120rem;
+	width: 90vw;
+	max-width: 120rem;
 	border-top: 1px solid #e0e0e0;
-	border-left: 1px solid #e0e0e0;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	@media ${(props) => props.theme.device.tablet} {
+		grid-template-columns: repeat(1, 1fr);
+		width: 90vw;
+	}
 `;
 const InfoItemBox = styled.div`
+	width: 100%;
 	display: flex;
 	align-items: center;
 	font-size: 1.8rem;
@@ -158,7 +169,7 @@ const InfoItemBox = styled.div`
 	border-bottom: 1px solid #e0e0e0;
 	${(props) =>
 		props.column &&
-		`flex-direction: column; border-top:1px solid #e0e0e0; width:120rem; padding:3.05rem 0`}
+		`flex-direction: column; border-top:1px solid #e0e0e0; max-width:120rem; padding:3.05rem 0`}
 `;
 const InfoTitle = styled.p`
 	width: 18rem;
@@ -171,7 +182,10 @@ const InfoTitle = styled.p`
 const InfoText = styled.p`
 	font-family: 'kr-r';
 	padding: 0 0.5rem 0 2rem;
-	max-width: 42rem;
+	max-width: 30rem;
 	${(props) =>
-		props.long && `padding:0; max-width:none; width:120rem; font-size:2rem`}
+		props.long && `padding:0; max-width:none; width:100%; font-size:2rem`}
+	@media ${(props) => props.theme.device.tablet} {
+		max-width: fit-content;
+	}
 `;
