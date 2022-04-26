@@ -94,6 +94,9 @@ const Title = styled.h2`
 	font-size: 4rem;
 	font-family: 'kr-b';
 	${(props) => props.highLight && `color:red`}
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 20px;
+	}
 `;
 const Desc = styled.p`
 	height: 5.1rem;
@@ -101,6 +104,9 @@ const Desc = styled.p`
 	color: #8e8e8e;
 	text-align: center;
 	margin-bottom: 5rem;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 14px;
+	}
 `;
 const ListWrap = styled.ul`
 	max-width: 120rem;
@@ -110,6 +116,8 @@ const ListWrap = styled.ul`
 	padding: 0 2rem;
 	@media ${(props) => props.theme.device.mobile} {
 		grid-template-columns: repeat(2, 1fr);
+		width: 100%;
+		justify-items: center;
 	}
 `;
 const List = styled.li`
@@ -119,7 +127,7 @@ const List = styled.li`
 	background-color: #fff;
 	border-radius: 24px;
 	@media ${(props) => props.theme.device.tablet} {
-		max-width: 31.2rem;
+		max-width: 33.2rem;
 	}
 `;
 const ListImgBox = styled.div`
@@ -147,6 +155,10 @@ const ListTitle = styled.h3`
 	letter-spacing: -0.72px;
 	color: #221814;
 	${(props) => props.hover && `text-decoration: underline;`}
+	@media ${(props) => props.theme.device.mobile} {
+		margin-top: 5px;
+		font-size: 14px;
+	}
 `;
 const ListDesc = styled.span`
 	font-size: 1.4rem;
@@ -161,6 +173,9 @@ const ListDescTotalPrice = styled.p`
 	font-family: 'ro-b';
 	letter-spacing: -0.4px;
 	margin-top: 0.2rem;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 18px;
+	}
 `;
 const DescWon = styled.span`
 	font-family: 'kr-r';
