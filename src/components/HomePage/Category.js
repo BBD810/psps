@@ -46,6 +46,9 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 5rem 0;
+	@media ${(props) => props.theme.device.mobile} {
+		margin: 30px auto;
+	}
 `;
 const CategoryWrap = styled.div`
 	max-width: 101.9rem;
