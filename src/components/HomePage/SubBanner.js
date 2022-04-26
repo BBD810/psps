@@ -121,6 +121,9 @@ const SubBannerContainer = styled.div`
 	position: relative;
 	width: 100%;
 	margin: 1.8rem 0 13.2rem;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const SubBannerWrap = styled.div`
 	width: 100%;

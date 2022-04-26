@@ -156,6 +156,9 @@ const Container = styled.div`
 	max-height: 85rem;
 	margin-top: -2rem;
 	position: relative;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 
 const MainBannerWrap = styled.div`
