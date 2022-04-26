@@ -62,12 +62,18 @@ const Title = styled.h2`
 	letter-spacing: -1.6px;
 	color: #221814;
 	${(props) => props.navbar && `text-align:left; margin-left:22px;`}
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 20px;
+	}
 `;
 const TitleDes = styled.p`
 	font-size: 1.8rem;
 	font-family: 'kr-r';
 	letter-spacing: -0.72px;
 	color: #7c7c7c;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 14px;
+	}
 `;
 const CategoryBox = styled.div`
 	width: 100%;
