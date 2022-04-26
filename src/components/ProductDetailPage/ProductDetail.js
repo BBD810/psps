@@ -77,23 +77,34 @@ export default ProductDetail;
 
 const ProductDetailWrap = styled.div`
 	position: relative;
-	width: 192rem;
+	max-width: 192rem;
+	width: 100%;
 `;
 const ProductDetailHead = styled.div`
-	width: 192rem;
+	width: 100%;
 	height: 32.7rem;
+	padding: 12;
 	display: flex;
 	justify-content: center;
 	background-color: #f2f2f2;
 	position: relative;
 	z-index: -3;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+		background-color: #fff;
+		height: 5rem;
+	}
 `;
 const ControllerBox = styled.div`
 	width: 100%;
+	max-width: 100vw;
 	position: fixed;
 	bottom: 3rem;
 	left: 0;
 	z-index: 99;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const Controller = styled.ul`
 	width: 36rem;
@@ -124,12 +135,15 @@ const Switch = styled.li`
 		line-height:6.4rem;`}
 `;
 const ProductDetailBody = styled.div`
-	width: 192rem;
+	max-width: 192rem;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	position: relative;
 	margin-bottom: 7.5rem;
 `;
 const DetailImg = styled.img`
-	width: 120rem;
+	max-width: 120rem;
+	width: 100%;
+	padding: 0 16px;
 `;
