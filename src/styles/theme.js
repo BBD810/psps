@@ -1,4 +1,5 @@
 const deviceSizes = {
+	micro: '290px',
 	mobile: '500px',
 	tablet: '768px',
 	laptop: '1024px',
@@ -6,6 +7,7 @@ const deviceSizes = {
 };
 
 const device = {
+	micro: `screen and (max-width:${deviceSizes.micro})`,
 	mobile: `screen and (max-width:${deviceSizes.mobile})`,
 	tablet: `screen and (max-width:${deviceSizes.tablet})`,
 	laptop: `screen and (max-width:${deviceSizes.laptop})`,
