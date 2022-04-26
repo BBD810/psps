@@ -79,6 +79,9 @@ const RecommendWrap = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media ${(props) => props.theme.device.mobile} {
+		margin: 0px auto 40px;
+	}
 `;
 const Logo = styled.img`
 	width: 6rem;
