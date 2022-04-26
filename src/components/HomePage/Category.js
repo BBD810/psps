@@ -82,6 +82,14 @@ const CategoryBox = styled.div`
 	gap: 5.5rem;
 	margin: 5.9rem 0;
 	${(props) => props.navbar && `gap:3%; padding: 0 5px;`}
+	@media ${(props) => props.theme.device.mobile} {
+		gap: 18px 23px;
+	}
+	@media ${(props) => props.theme.device.micro} {
+		grid-template-columns: repeat(2, 1fr);
+		width: 90%;
+		margin: 5.9rem auto;
+	}
 `;
 const IconBox = styled.div`
 	width: 14.5rem;
@@ -91,10 +99,15 @@ const IconBox = styled.div`
 `;
 const IconImgBox = styled.div`
 	width: 100%;
+	margin: auto;
+	@media ${(props) => props.theme.device.mobile} {
+		max-width: 62px;
+		max-height: 62px;
+	}
 `;
 const IconImg = styled.img`
-	width: 14.5rem;
-	height: 14.5rem;
+	width: 100%;
+	height: 100%;
 `;
 const IconTitle = styled.p`
 	font-size: 2.8rem;
