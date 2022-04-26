@@ -218,12 +218,16 @@ const OrderBox = (props) => {
 export default OrderBox;
 
 const BoxContainer = styled.div`
-	width: 192rem;
+	width: 100%;
+	max-width: 192rem;
 	height: 67.3rem;
 	display: flex;
 	justify-content: center;
 	background-color: #fff;
 	position: relative;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const Box = styled.div`
 	width: 101.2rem;
