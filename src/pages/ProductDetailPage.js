@@ -9,6 +9,8 @@ import ProductDetail from '../components/ProductDetailPage/ProductDetail';
 import ProductInfoTable from '../components/ProductDetailPage/ProductInfoTable';
 import Induce from '../components/Induce';
 import Alert from '../components/Modal/Alert';
+import MobileOrderBox from '../components/ProductDetailPage/MobileOrderBox';
+import MobileOrderButton from '../components/ProductDetailPage/MobileOrderButton';
 
 const ProductDetailPage = () => {
 	const location = useLocation().state;
@@ -66,6 +68,18 @@ const ProductDetailPage = () => {
 					</AlertImgBox>
 				</AlertBox>
 			)}
+			<MobileOrderButton
+				detail={detail}
+				optionList={optionList}
+				selectRef={selectRef}
+				user={user}
+				cartAlertState={cartAlertState}
+				setCartAlertState={setCartAlertState}
+				setAlertMsg={setAlertMsg}
+				setAlertState={setAlertState}
+			/>
+			<MobileOrderBox detail={detail} optionList={optionList} />
+
 			<OrderBox
 				detail={detail}
 				optionList={optionList}
@@ -107,6 +121,11 @@ const AlertBox = styled.div`
 	position: fixed;
 	top: 8.5rem;
 	z-index: 44;
+	@media ${(props) => props.theme.device.mobile} {
+		width: fit-content;
+		z-index: 9999;
+		right: 0px;
+	}
 `;
 
 const alertBoxFade = keyframes`
@@ -132,6 +151,9 @@ const AlertImgBox = styled.div`
 		css`
 			animation: ${alertBoxFade} 5s;
 		`}
+	@media ${(props) => props.theme.device.mobile} {
+		width: 200px;
+	}
 `;
 const AlertImg = styled.img`
 	width: 100%;
@@ -147,4 +169,8 @@ const AlertText = styled.p`
 	transform: translateY(-50%);
 	left: 2.2rem;
 	text-align: center;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 35rem;
+		font-size: 14px;
+	}
 `;
