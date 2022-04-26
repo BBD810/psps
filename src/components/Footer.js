@@ -66,7 +66,6 @@ const Footer = () => {
 				<FooterBodyInside>
 					<FooterBodyLeft>
 						<BodyLeftImg alt="logo" src={logo} />
-
 						<BodyLeftText>
 							{infoLeft1}
 							<BodyLeftTextSpan onClick={onBusinessNumber}>
@@ -107,11 +106,15 @@ const Footer = () => {
 export default Footer;
 
 const FooterWrap = styled.div`
-	width: 100%;
-	height: 28.4rem;
+	width: 95%;
 	display: flex;
 	flex-direction: column;
 	border-top: 1px solid #8e8e8e;
+	@media ${(props) => props.theme.device.tablet} {
+		padding: 10px 0px;
+		height: 190px;
+		position: relative;
+	}
 `;
 const FooterHead = styled.div`
 	width: 100%;
@@ -120,6 +123,13 @@ const FooterHead = styled.div`
 	justify-content: center;
 	background: #ffffff 0% 0% no-repeat padding-box;
 	border-bottom: 1px solid #e6e6e6;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 180px;
+		position: absolute;
+		top: 20px;
+		right: 0px;
+		border-bottom: none;
+	}
 `;
 const FooterHeadInside = styled.div`
 	width: 120rem;
@@ -139,11 +149,18 @@ const HeadLeftText = styled.p`
 	cursor: pointer;
 	${(props) =>
 		props.effect && 'border-left:1px solid #8e8e8e; font-family:"kr-b";'}
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 12px;
+		padding: 0 15px;
+	}
 `;
 
 const FooterHeadRight = styled.div`
 	display: flex;
 	align-items: center;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const HeadRightButton = styled.button`
 	width: fit-content;
@@ -171,17 +188,28 @@ const FooterBodyInside = styled.div`
 `;
 const FooterBodyLeft = styled.div`
 	width: 70%;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+	}
 `;
 const BodyLeftImg = styled.img`
 	width: 3.6rem;
 	height: 3.6rem;
 	margin-bottom: 1.7rem;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 36px;
+		height: 36px;
+	}
 `;
 const BodyLeftText = styled.p`
 	font-size: 1.4rem;
 	font-family: 'kr-r';
 	color: #6b6462;
 	letter-spacing: -0.28px;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 10px;
+		letter-spacing: 0px;
+	}
 `;
 const BodyLeftTextSpan = styled.span`
 	text-decoration: underline;
@@ -190,6 +218,9 @@ const BodyLeftTextSpan = styled.span`
 const FooterBodyRight = styled.div`
 	width: 30%;
 	margin-top: 2rem;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const BodyRightTitle = styled.h3`
 	text-align: right;
