@@ -27,6 +27,9 @@ const InduceContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin: 4rem 0 10rem;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const InduceImgBox = styled.div`
 	width: 100vw;
