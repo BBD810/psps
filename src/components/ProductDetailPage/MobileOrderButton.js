@@ -141,7 +141,7 @@ const MobileOrderButton = (props) => {
 						</OptionBox>
 					) : (
 						<OptionBox>
-							<OptionListBox ref={optionEl}>
+							<OptionListBox state={optionBoxState} ref={optionEl}>
 								{props.optionList.map((el, idx) => (
 									<OptionList
 										key={idx}
@@ -150,10 +150,10 @@ const MobileOrderButton = (props) => {
 											clickOption(el);
 										}}
 									>
-										<OptionListTitle>{el.title}</OptionListTitle>
-										<OptionListPrice>
+										<OptionListText>{el.title}</OptionListText>
+										<OptionListText>
 											{(el.price - el.discount).toLocaleString()}
-										</OptionListPrice>
+										</OptionListText>
 									</OptionList>
 								))}
 							</OptionListBox>
@@ -311,17 +311,24 @@ const ToggleBtn = styled.img`
 	border-radius: 50%;
 	box-shadow: 0px 3px 6px #00000029;
 `;
+
 const OptionListBox = styled.ul`
-	width: 100%;
+	width: 100.4%;
+	width: calc(100% + 2px);
 	max-height: 190px;
 	position: absolute;
 	top: -15px;
-	left: 0;
+	left: -0.8px;
 	background-color: #fff;
 	border: 1px solid #c6c6c6;
 	border-radius: 14px;
 	z-index: 999;
 	overflow-y: auto;
+	${(props) =>
+		props.state &&
+		css`
+			animation: ${orderBoxFade} 300ms;
+		`}
 `;
 const OptionList = styled.li`
 	display: flex;
@@ -332,13 +339,13 @@ const OptionList = styled.li`
 	letter-spacing: -0.56px;
 	color: #221814;
 	border-radius: 14px;
+	transition: all 200ms ease;
 	${(props) => props.active && `font-family:'kr-b';`}
 	&:hover {
 		background-color: #f2f2f2;
 	}
 `;
-const OptionListTitle = styled.p``;
-const OptionListPrice = styled.p``;
+const OptionListText = styled.p``;
 const CountBtnImg = styled.img`
 	width: 19px;
 	height: 19px;
