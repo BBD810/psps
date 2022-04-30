@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { cart_newData } from '../../modules/cart';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import * as _basket from '../../controller/basket';
 import angleDown from '../../images/angle-down.svg';
 import increase from '../../images/count-plus.svg';
@@ -121,13 +121,20 @@ const MobileOrderButton = (props) => {
 		}
 	};
 
+	const closeOrderWrap = () => {
+		setPayBtnState(false);
+	};
+
 	return (
 		<Container payBtnState={payBtnState} onClick={closeOption}>
 			{!payBtnState && <PayButton onClick={clickPayBtn}>구매하기</PayButton>}
 			{payBtnState && (
-				<OrderWrap>
+				<OrderWrap state={payBtnState}>
+					<CloseLineBox onClick={closeOrderWrap}>
+						<CloseLine></CloseLine>
+					</CloseLineBox>
 					{!optionBoxState ? (
-						<OptionBox onClick={clickOptionBox}>
+						<OptionBox option onClick={clickOptionBox}>
 							{option && option.title}
 							<OptionTitle>옵션</OptionTitle>
 							<ToggleBtn alt="toggle image" src={angleDown} />
@@ -216,6 +223,7 @@ const Container = styled.div`
 	border: 1px solid #a0a0a0;
 	padding: 14px 16px;
 	display: none;
+	transition: all 300ms ease;
 	@media ${(props) => props.theme.device.mobile} {
 		display: block;
 	}
@@ -232,15 +240,43 @@ const PayButton = styled.button`
 	color: #fff;
 	letter-spacing: -0.72px;
 `;
+const orderBoxFade = keyframes`
+	0% {
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+`;
 const OrderWrap = styled.div`
 	width: 100vw;
 	background-color: #fff;
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	border-radius: 4px 4px 0 0;
+	border-radius: 14px 14px 0 0;
 	padding: 14px 16px;
+	${(props) =>
+		props.state &&
+		css`
+			animation: ${orderBoxFade} 300ms;
+		`}
 `;
+const CloseLineBox = styled.div`
+	width: 100%;
+	height: 20px;
+	padding: 0 38% 16px;
+	margin-bottom: 10px;
+`;
+const CloseLine = styled.div`
+	width: 100%;
+	height: 100%;
+	max-width: 100px;
+	margin: auto;
+	border-radius: 10px;
+	background-color: #e0e0e0;
+`;
+
 const OptionBox = styled.div`
 	height: 62px;
 	border: 1px solid #c6c6c6;
@@ -253,6 +289,7 @@ const OptionBox = styled.div`
 	color: #221814;
 	text-align: center;
 	margin-bottom: 3rem;
+	${(props) => props.option && `cursor: pointer !impotent;`}
 `;
 const OptionTitle = styled.p`
 	width: fit-content;
@@ -317,16 +354,16 @@ const PriceBox = styled.div`
 	justify-content: space-between;
 	align-items: baseline;
 	font-size: 14px;
-	padding-bottom: 15px;
+	padding-bottom: 12px;
 	color: #7c7c7c;
 	${(props) => props.bottom && `border-bottom:1px solid #f4f4f4`}
-	${(props) => props.total && `color: #E50F11;`}
+	${(props) => props.total && `color: #E50F11; padding-bottom:10px;`}
 `;
 const Price = styled.p`
 	font-family: 'ro-b';
 	letter-spacing: -0.56px;
 	${(props) => props.title && `font-family: 'kr-r';`}
-	${(props) => props.total && `font-size:24px; margin-top:15px;`}
+	${(props) => props.total && `font-size:24px; margin-top:10px;`}
 `;
 const DecoPrice = styled.span`
 	text-decoration: line-through;
@@ -339,12 +376,12 @@ const ButtonBox = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	margin: 20px 0 10px;
+	margin: 10px 0 0;
 `;
 const SubmitButton = styled.button`
 	width: 158px;
 	width: 48%;
-	line-height: 6.2rem;
+	line-height: 7.2rem;
 	font-size: 2.4rem;
 	font-family: 'kr-r';
 	color: #fff;
