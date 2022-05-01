@@ -4,7 +4,7 @@ import { payment_request } from '../payments';
 import * as _user from '../controller/user';
 import styled from 'styled-components';
 import logo from '../images/red-logo.svg';
-
+import exitBtn from '../images/ico-toggle-white.svg';
 import UserData from '../components/PaymentPage/UserData';
 import ProductData from '../components/PaymentPage/ProductData';
 
@@ -117,6 +117,10 @@ const PaymentPage = () => {
 
 	return (
 		<div id="container">
+			<MobileNavbar>
+				<ExitBtnImg alt="exit button image" src={exitBtn} />
+				<NavbarTitle>주문하기</NavbarTitle>
+			</MobileNavbar>
 			<Container>
 				<LogoImg alt="logo" src={logo} />
 				<Title>주문하기</Title>
@@ -165,6 +169,7 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin: 100px auto;
+	${(props) => props.theme.device.tablet && `width:80rem;`}
 `;
 const LogoImg = styled.img`
 	width: 6.4rem;
@@ -222,4 +227,32 @@ const BackButton = styled.button`
 		background-color: #e50011;
 		color: #fff;
 	}
+`;
+const MobileNavbar = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 56px;
+	background-color: #dc0e0c;
+	z-index: 9999;
+	padding: 16px;
+	display: none;
+	@media ${(props) => props.theme.device.mobile} {
+		display: flex;
+		justify-content: center;
+	}
+`;
+const ExitBtnImg = styled.img`
+	width: 24px;
+	height: 24px;
+	transform: rotate(180deg);
+	position: fixed;
+	left: 10px;
+`;
+const NavbarTitle = styled.h2`
+	font-size: 18px;
+	font-family: 'kr-b';
+	letter-spacing: -0.72px;
+	color: #ffffff;
 `;
