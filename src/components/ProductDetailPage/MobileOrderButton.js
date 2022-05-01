@@ -243,9 +243,11 @@ const PayButton = styled.button`
 const orderBoxFade = keyframes`
 	0% {
 		opacity: 0;
+		transform: translateY(70%);
 	}
 	100%{
 		opacity: 1;
+		transform: translateY(0%);
 	}
 `;
 const OrderWrap = styled.div`
@@ -259,7 +261,7 @@ const OrderWrap = styled.div`
 	${(props) =>
 		props.state &&
 		css`
-			animation: ${orderBoxFade} 300ms;
+			animation: ${orderBoxFade} 500ms ease;
 		`}
 `;
 const CloseLineBox = styled.div`
