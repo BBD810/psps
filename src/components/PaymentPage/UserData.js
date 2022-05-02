@@ -123,7 +123,10 @@ const UserData = (props) => {
 									value={props.postZoneCode && props.postZoneCode}
 									readOnly
 								></ReceiveUserInput>
-								<InputPostcodeBtn onClick={goDaumPostcode}>
+								<InputPostcodeBtn
+									value={props.postZoneCode && props.postZoneCode}
+									onClick={goDaumPostcode}
+								>
 									우편번호 찾기
 								</InputPostcodeBtn>
 							</InputAndPostcode>
@@ -152,8 +155,8 @@ const UserData = (props) => {
 						</InputBox>
 					</DataBox>
 
-					<DataBox>
-						<DataTitle>배송요청사항</DataTitle>
+					<DataBox column>
+						<DataTitle column>배송요청사항</DataTitle>
 						<ReceiveUserInput
 							long
 							type="text"
@@ -195,19 +198,36 @@ const Title = styled.h2`
 	font-family: 'kr-b';
 	letter-spacing: -0.072rem;
 	margin: 0 auto 1.3rem 1.5rem;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 16px;
+		margin-left: 0;
+	}
 	${(props) => props.receive && `margin: 0 auto 0.6rem 1.5rem`}
 `;
 const BorderBox = styled.ul`
 	width: 100%;
-	padding: 2rem 4rem 0;
+	padding: 0rem 4rem 0;
 	border: 1px solid #e0e0e0;
 	border-radius: 24px;
+	@media ${(props) => props.theme.device.mobile} {
+		border: none;
+		border-bottom: 1px solid #f4f4f4;
+		border-radius: 0;
+		padding: 0px 0px 22px;
+		padding-bottom: 22px;
+	}
 `;
 const DataBox = styled.li`
 	display: flex;
 	align-items: flex-start;
 	margin: 3rem 0;
+
 	${(props) => props.orderUser && `margin:0 0 2rem`}
+	@media ${(props) => props.theme.device.mobile} {
+		align-items: center;
+		${(props) =>
+			props.column && `flex-direction: column; align-items: flex-start;`}
+	}
 `;
 
 const DataTitle = styled.p`
@@ -219,6 +239,11 @@ const DataTitle = styled.p`
 	color: #6b6462;
 	margin-right: 6.1rem;
 	padding-top: 1rem;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 12px;
+		padding-top: 0;
+		${(props) => props.column && `margin-bottom:9px;`}
+	}
 	${(props) => props.orderUser && `padding-top:0`}
 `;
 const OrderUserText = styled.p`
@@ -227,6 +252,9 @@ const OrderUserText = styled.p`
 	text-align: left;
 	letter-spacing: -0.056rem;
 	color: #221814;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 12px;
+	}
 `;
 const ReceiveUserWrap = styled.div`
 	width: 100%;
@@ -239,6 +267,10 @@ const CheckImg = styled.img`
 	width: 1.4rem;
 	height: 1.4rem;
 	cursor: pointer;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 14px;
+		height: 14px;
+	}
 `;
 const CheckInfo = styled.span`
 	font-size: 1.2rem;
@@ -269,14 +301,32 @@ const ReceiveUserInput = styled.input`
 	${(props) =>
 		props.readOnly &&
 		`&:focus {border: 1px solid #c6c6c6; box-shadow:none; margin-bottom: 2rem;}`}
+
+	@media ${(props) => props.theme.device.tablet} {
+		width: 30rem;
+		${(props) => props.long && `width:44.6rem`}
+	}
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+		font-size: 12px;
+		height: 44px;
+	}
 	${(props) => props.long && `width:34.6rem`}
 `;
 const InputBox = styled.div`
 	width: 34.6rem;
+	${(props) => props.theme.device.tablet && `width:fit-content;`}
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+	}
 `;
 const InputAndPostcode = styled.div`
 	display: flex;
 	justify-content: space-between;
+	@media ${(props) => props.theme.device.mobile} {
+		position: relative;
+		margin-bottom: 0px;
+	}
 `;
 const InputPostcodeBtn = styled.div`
 	height: 4.3rem;
@@ -289,6 +339,17 @@ const InputPostcodeBtn = styled.div`
 	padding: 1rem 1rem;
 	color: #8e8e8e;
 	cursor: pointer;
+	@media ${(props) => props.theme.device.mobile} {
+		position: absolute;
+		width: 100%;
+		height: 81%;
+		background-color: transparent;
+		border: none;
+		font-size: 12px;
+		padding: 13px 8px;
+		font-family: 'kr-r';
+		${(props) => props.value && `opacity: 0;`}
+	}
 `;
 const PostcodeModal = styled.div`
 	width: 100vw;
@@ -319,4 +380,7 @@ const PasteAddrCheckBox = styled.div`
 	margin-top: -1rem;
 	display: flex;
 	align-items: center;
+	@media ${(props) => props.theme.device.mobile} {
+		justify-content: flex-end;
+	}
 `;
