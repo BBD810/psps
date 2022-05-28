@@ -28,12 +28,16 @@ const MobileNavbar = () => {
 	const goMenu = () => {
 		setMenuState(!menuState);
 	};
+	const goLogin = () => {
+		setMenuState(false);
+		history.push('/login');
+	};
 
 	return (
 		<Container menuState={menuState}>
 			<NavbarWarp path={location.pathname === '/product'}>
 				{menuState && (
-					<NavbarInfoBox>
+					<NavbarInfoBox onClick={goLogin}>
 						{user.login ? (
 							<UserNameBox>{`${user.name} 님`}</UserNameBox>
 						) : (
@@ -113,6 +117,7 @@ const NavbarInfoBox = styled.div`
 	margin-left: 16px;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 `;
 const UserNameBox = styled(NavbarInfoBox)`
 	margin-left: 0;
