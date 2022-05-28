@@ -83,6 +83,7 @@ const MobileOrderButton = (props) => {
 	}
 
 	const goPayment = async () => {
+		setPayBtnState(false);
 		if (!props.user.login) {
 			props.setAlertMsg('로그인 후 이용가능합니다');
 			return props.setAlertState(true);
