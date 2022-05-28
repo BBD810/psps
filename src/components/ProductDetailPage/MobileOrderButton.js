@@ -242,12 +242,10 @@ const PayButton = styled.button`
 `;
 const orderBoxFade = keyframes`
 	0% {
-		opacity: 0;
-		transform: translateY(70%);
+		opacity: 0;	
 	}
 	100%{
-		opacity: 1;
-		transform: translateY(0%);
+		opacity: 1;	
 	}
 `;
 const OrderWrap = styled.div`
