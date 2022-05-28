@@ -118,7 +118,7 @@ const PaymentPage = () => {
 	return (
 		<div id="container">
 			<MobileNavbar>
-				<ExitBtnImg alt="exit button image" src={exitBtn} />
+				<ExitBtnImg alt="exit button image" src={exitBtn} onClick={goBack} />
 				<NavbarTitle>주문하기</NavbarTitle>
 			</MobileNavbar>
 			<Container>
@@ -163,34 +163,47 @@ const PaymentPage = () => {
 export default PaymentPage;
 
 const Container = styled.div`
-	width: 69.7rem;
-	margin: auto;
+	max-width: 69.7rem;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin: 100px auto;
 	${(props) => props.theme.device.tablet && `width:80rem;`}
+	@media ${(props) => props.theme.device.mobile} {
+		margin: 40px auto;
+		max-width: 100vw;
+		padding: 0 16px;
+	}
 `;
 const LogoImg = styled.img`
 	width: 6.4rem;
 	height: 6.4rem;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const Title = styled.h2`
 	font-size: 3rem;
 	font-family: 'kr-b';
 	letter-spacing: -1.2px;
 	margin: 1rem auto;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const BtnBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: fit-content;
+	width: 34.6rem;
 	margin: auto;
-	height: 19.7rem;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+	}
 `;
 const SubmitButton = styled.button`
-	width: 34.6rem;
+	width: 100%;
 	height: 6.2rem;
 	border-radius: 14px;
 	font-size: 2.1rem;
@@ -200,7 +213,7 @@ const SubmitButton = styled.button`
 	transition: all 200ms ease;
 	background-color: #a0a0a0;
 	color: #fff;
-	margin: 6.05rem auto 0;
+	margin: 6.05rem auto 1rem;
 	cursor: default !important;
 	${(props) =>
 		props.state &&
@@ -211,9 +224,13 @@ const SubmitButton = styled.button`
 		color: #fff;
 	}
 	`}
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 18px;
+		height: 44px;
+	}
 `;
 const BackButton = styled.button`
-	width: 34.6rem;
+	width: 100%;
 	height: 6.2rem;
 	border-radius: 14px;
 	font-size: 2.1rem;
@@ -226,6 +243,9 @@ const BackButton = styled.button`
 	&:hover {
 		background-color: #e50011;
 		color: #fff;
+	}
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
 	}
 `;
 const MobileNavbar = styled.div`
@@ -249,6 +269,7 @@ const ExitBtnImg = styled.img`
 	transform: rotate(180deg);
 	position: fixed;
 	left: 10px;
+	cursor: pointer;
 `;
 const NavbarTitle = styled.h2`
 	font-size: 18px;
