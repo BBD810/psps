@@ -28,7 +28,7 @@ const ProductData = (props) => {
 									<BorderBox key={idx}>
 										<ProductText title="true">
 											{el.product_title}, {el.product_option_title}
-											<ProductText quantity>{el.quantity}개</ProductText>
+											<ProductQuantityText>{el.quantity}개</ProductQuantityText>
 										</ProductText>
 
 										<ProductText price>
@@ -132,18 +132,34 @@ const ProductText = styled.p`
 	${(props) =>
 		props.title &&
 		`width:55rem; font-family: 'kr-b'; color: #221814;display:flex; justify-content: space-between;`}
-	${(props) =>
-		props.quantity &&
-		`width:7rem; &::before {
-		content: '수량 ';
-	}`}
+
 	${(props) => props.price && `width:10rem; text-align: right; `}
 	@media ${(props) => props.theme.device.mobile} {
 		font-size: 12px;
 		font-family: 'kr-r';
 		color: #221814;
 		${(props) => props.title && `width:fit-content;`}
-		${(props) => props.quantity && `&::before {content: ', ';}`}
+	}
+`;
+const ProductQuantityText = styled.span`
+	font-size: 1.5rem;
+	font-family: 'kr-r';
+	letter-spacing: -0.6px;
+	color: #6b6462;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 7rem;
+	&::before {
+		content: '수량 ';
+	}
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 12px;
+		font-family: 'kr-r';
+		color: #221814;
+		&::before {
+			content: ', ';
+		}
 	}
 `;
 const TotalPriceBox = styled.div`
