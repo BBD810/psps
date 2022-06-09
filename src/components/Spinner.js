@@ -26,4 +26,8 @@ const Container = styled.div`
 	justify-content: center;
 	align-items: center;
 	z-index: 100;
+	@media ${(props) => props.theme.device.mobile} {
+		position: static;
+		padding: 50% 0;
+	}
 `;
