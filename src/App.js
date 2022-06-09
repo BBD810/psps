@@ -20,6 +20,7 @@ import PaymentPage from './pages/PaymentPage';
 import PaymentResultPage from './pages/PaymentResultPage';
 import OrderChangePage from './pages/OrderChangePage';
 import WithdrawalPage from './pages/WithdrawalPage';
+import MobilePaymentResultPage from './pages/MobilePaymentResultPage';
 import Footer from './components/Footer';
 import MobileNavbar from './components/Mobile/MobileNavbar';
 
@@ -73,6 +74,11 @@ const App = () => {
 						exact
 						path="/withdrawal"
 						component={Auth(WithdrawalPage, true)}
+					/>
+					<Route
+						exact
+						path="/mobile/payment/result/*"
+						component={Auth(MobilePaymentResultPage, true)}
 					/>
 				</Switch>
 				<Footer />
