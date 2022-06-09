@@ -14,6 +14,7 @@ export const payment_request = (
 			...impData,
 			pay_method: 'card',
 			merchant_uid: 'merchant_' + new Date().getTime(),
+			m_redirect_url: `${PAYMENT_RESULT_URL}/mobile/payment/result/`,
 		},
 		function (rsp) {
 			if (rsp.success) {
