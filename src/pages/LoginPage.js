@@ -121,6 +121,7 @@ export default LoginPage;
 
 const Container = styled.div`
 	width: 192rem;
+	max-width: 100vw;
 	padding: 10rem 0 10.3rem 0;
 	display: flex;
 	flex-direction: column;
@@ -128,14 +129,21 @@ const Container = styled.div`
 	margin-bottom: 9.2rem;
 `;
 const RegisterInside = styled.div`
+	max-width: 90vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+	}
 `;
 const LogoImg = styled.img`
 	width: 6.4rem;
 	height: 6.4rem;
 	margin-bottom: 0.8rem;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const Title = styled.h2`
 	height: 4.4rem;
@@ -143,9 +151,17 @@ const Title = styled.h2`
 	font-family: 'kr-b';
 	color: #000000;
 	margin-bottom: 4rem;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 24px;
+		margin-bottom: 32px;
+	}
 `;
 const Items = styled.li`
 	position: relative;
+	@media ${(props) => props.theme.device.mobile} {
+		margin-bottom: 12px;
+		width: 90vw;
+	}
 	${(props) => (props.last ? `margin-bottom:0.8rem;` : `margin-bottom:2rem`)}
 `;
 const ItemTitle = styled.p`
@@ -159,6 +175,9 @@ const ItemTitle = styled.p`
 	font-family: 'kr-r';
 	color: #221814;
 	background-color: #fff;
+	@media ${(props) => props.theme.device.mobile} {
+		display: none;
+	}
 `;
 const ItemInput = styled.input`
 	width: 34.6rem;
@@ -170,6 +189,11 @@ const ItemInput = styled.input`
 	border: 1px solid #c6c6c6;
 	border-radius: 14px;
 	background-color: #fff;
+	@media ${(props) => props.theme.device.mobile} {
+		width: 100%;
+		font-size: 14px;
+		padding: 20px 12px;
+	}
 	&::placeholder {
 		color: #c6c6c6;
 	}
@@ -178,7 +202,7 @@ const ItemInput = styled.input`
 	}
 `;
 const FindBox = styled.div`
-	width: 34.6rem;
+	width: 100%;
 	height: 2rem;
 	display: flex;
 	align-items: center;
@@ -190,6 +214,9 @@ const FindText = styled.div`
 	color: #6b6462;
 	text-decoration: underline;
 	cursor: pointer;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 12px;
+	}
 	&:hover {
 		color: #e50011;
 	}
@@ -207,6 +234,11 @@ const SubmitButton = styled.button`
 	border: 1px solid #e50011;
 	border-radius: 14px;
 	transition: all 200ms ease;
+	@media ${(props) => props.theme.device.mobile} {
+		font-size: 18px;
+		width: 100%;
+		height: 44px;
+	}
 	&:hover {
 		background-color: #e50011;
 		color: #fff;
